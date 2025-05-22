@@ -1,0 +1,36 @@
+version: '3.9'
+name: OceanGuide
+services:
+  backend:
+    container_name: backend
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "7778:7778"
+    networks:
+      - backend_network
+  
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend/kqgis
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+
+  python_service:
+    container_name: python_service
+    build:
+      context: ./WorkSpace
+      dockerfile: Dockerfile.python
+    ports:
+      - "7780:7780"
+    networks:
+      - backend_network
+
+networks:
+  backend_network:
+    driver: bridge

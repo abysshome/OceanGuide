@@ -1,0 +1,5 @@
+FROM openjdk:17-jdk-slim
+WORKDIR /app
+COPY backend.jar /app/backend.jar
+EXPOSE 7778
+CMD ["java", "-jar", "./backend.jar", "--server.port=7778"]

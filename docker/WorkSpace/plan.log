@@ -1,0 +1,392 @@
+INFO:     Will watch for changes in these directories: ['D:\\Tasks\\ChiikaTravel\\chiika-test\\docker\\WorkSpace']
+INFO:     Uvicorn running on http://0.0.0.0:7781 (Press CTRL+C to quit)
+INFO:     Started reloader process [29952] using WatchFiles
+INFO:     Started server process [22404]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+description=你好，请问你能帮到我什么吗？ 我早上八点到北京南站，计划在北京游玩一天，晚上六点左右到达北京西站，途径3个景点即可。
+创建的对话 ID 为：17
+{"code":1,"msg":"success","data":{"id":27,"input":"请从下面对话中提取出五元组并以JSON格式输出：你好，请问你能帮到我什么吗？ 我早上八点到北京南站，计划在北京游玩一天，晚上六点左右到达北京西站，途径3个景点即可。请将行程按以下格式输出，并确保以JSON格式提供：\n    { \n        \"出发地点\": \"[出发地点]\",\n        \"出发时间\": \"yyyy.mm.dd hh:mm\",\n        \"结束地点\": \"[结束地点]\",\n        \"结束时间\": \"yyyy.mm.dd hh:mm\",\n        \"经过个数\": [经过个数]\n    }","output":"{\n    \"出发地点\": \"北京南站\",\n    \"出发时间\": \"yyyy.mm.dd hh:mm\",\n    \"结束地点\": \"北京西站\",\n    \"结束时间\": \"yyyy.mm.dd hh:mm\",\n    \"经过个数\": 3\n}","dialogId":17,"userId":6}}
+{
+    "出发地点": "北京南站",
+    "出发时间": "yyyy.mm.dd hh:mm",
+    "结束地点": "北京西站",
+    "结束时间": "yyyy.mm.dd hh:mm",
+    "经过个数": 3
+}
+创建的对话 ID 为：18
+对话响应：
+{"code":1,"msg":"success","data":{"id":29,"input":"\n    TASK：作为旅游行程规划师，假设你充分了解北京市的所有地点以及交通信息，且十分擅长于根据不同人群的需求安排合理的游玩地点和时间。请根据给定信息推荐3个POI地点，构成一条顺畅且完整的旅行路线。\n    REQUEST：规划一个旅游路线，包括POI地点序列。请根据以下信息规划路线：1.出发地点：北京南站；2.出发时间：yyyy.mm.dd hh:mm；3.终止地点：北京西站；4.终止时间：yyyy.mm.dd hh:mm；5.途径点个数：3个；6.旅行偏好：{感兴趣的旅行地点：自然风光，美食；感兴趣的旅行方式：常规路线；旅行伙伴：恋人};；7.可参考的地点信息为：None\n    ACTION：\n    1. 确定本次行程的大概活动范围，根据起终点的位置规划路线。\n    2. 根据游客的偏好找到所有可能感兴趣的景点、美食、购物以及休闲娱乐场所等。\n    3. 综合考虑行程起终时间、交通时间、地点之间是否顺路等因素，规划一条合理的路线。\n    4. 安排就餐地点时尽量选择距离参观景点一公里以内的地点。\n    5. 你只需要返回 3 个你认为最合适的地点即可，不要多于 3 个也不要少于 3 个。\n    EXAMPLE：\n    以下是一个推荐POI地点的示例，最终输出应为 JSON 格式文本：\n    {\n        \"pois\":[\n            {\n                \"name\": \"[地点名称]\",\n                \"longitude\": [地点经度],\n                \"latitude\": [地点纬度]\n            },\n            ...\n        ]\n    }\n    ","output":"```json\n{\n    \"pois\": [\n        {\n            \"name\": \"颐和园\",\n            \"longitude\": 116.30542,\n            \"latitude\": 39.99786\n        },\n        {\n            \"name\": \"北京动物园\",\n            \"longitude\": 116.40387,\n            \"latitude\": 39.91629\n        },\n        {\n            \"name\": \"北京欢乐谷\",\n            \"longitude\": 116.53182,\n            \"latitude\": 39.99821\n        }\n    ]\n}\n```","dialogId":18,"userId":11}}
+解析 POI 内容时出错： Expecting value: line 1 column 1 (char 0)
+北京南站
+[116.37101129830273, 39.864677310761074]
+None
+北京西站
+[116.3159143863044, 39.893612651820256]
+INFO:     127.0.0.1:54651 - "GET /get-plan/?userId=11&dialogId=13 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "D:\Tasks\ChiikaTravel\chiika-test\docker\WorkSpace\get_plan.py", line 676, in get_plan
+    raise HTTPException(status_code=400, detail="Failed to get POI data")
+NameError: name 'HTTPException' is not defined
+description=你好，请问你能帮到我什么吗？ 我早上八点到北京南站，计划在北京游玩一天，晚上六点左右到达北京西站，途径3个景点即可。
+创建的对话 ID 为：19
+{"code":1,"msg":"success","data":{"id":31,"input":"请从下面对话中提取出五元组并以JSON格式输出：你好，请问你能帮到我什么吗？ 我早上八点到北京南站，计划在北京游玩一天，晚上六点左右到达北京西站，途径3个景点即可。请将行程按以下格式输出，并确保以JSON格式提供：\n    { \n        \"出发地点\": \"[出发地点]\",\n        \"出发时间\": \"yyyy.mm.dd hh:mm\",\n        \"结束地点\": \"[结束地点]\",\n        \"结束时间\": \"yyyy.mm.dd hh:mm\",\n        \"经过个数\": [经过个数]\n    }","output":"```json\n{\n    \"出发地点\": \"北京南站\",\n    \"出发时间\": \"yyyy.mm.dd 08:00\",\n    \"结束地点\": \"北京西站\",\n    \"结束时间\": \"yyyy.mm.dd 18:00\",\n    \"经过个数\": 3\n}\n```","dialogId":19,"userId":6}}
+```json
+{
+    "出发地点": "北京南站",
+    "出发时间": "yyyy.mm.dd 08:00",
+    "结束地点": "北京西站",
+    "结束时间": "yyyy.mm.dd 18:00",
+    "经过个数": 3
+}
+```
+INFO:     172.23.96.1:54760 - "GET /get-plan/?userId=11&dialogId=13 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "D:\Tasks\ChiikaTravel\chiika-test\docker\WorkSpace\get_plan.py", line 648, in get_plan
+    travel_plan = get_travel_plan(input_text)
+  File "D:\Tasks\ChiikaTravel\chiika-test\docker\WorkSpace\get_plan.py", line 247, in get_travel_plan
+    travel_plan = eval(content.strip())
+  File "<string>", line 1
+    ```json
+    ^
+SyntaxError: invalid syntax
+description=
+创建的对话 ID 为：20
+{"code":1,"msg":"success","data":{"id":33,"input":"请从下面对话中提取出五元组并以JSON格式输出：请将行程按以下格式输出，并确保以JSON格式提供：\n    { \n        \"出发地点\": \"[出发地点]\",\n        \"出发时间\": \"yyyy.mm.dd hh:mm\",\n        \"结束地点\": \"[结束地点]\",\n        \"结束时间\": \"yyyy.mm.dd hh:mm\",\n        \"经过个数\": [经过个数]\n    }","output":"由于您没有提供具体的对话内容，我无法直接从对话中提取信息。但是，我可以给您一个示例格式，说明如何从对话中提取五元组并以JSON格式输出：\n\n```json\n{\n    \"出发地点\": \"[出发地点]\",\n    \"出发时间\": \"yyyy.mm.dd hh:mm\",\n    \"结束地点\": \"[结束地点]\",\n    \"结束时间\": \"yyyy.mm.dd hh:mm\",\n    \"经过个数\": [经过个数]\n}\n```\n\n请在对话中找出以下信息：\n- 出发地点\n- 出发时间（格式：yyyy.mm.dd hh:mm）\n- 结束地点\n- 结束时间（格式：yyyy.mm.dd hh:mm）\n- 经过的地点数量（经过个数）\n\n然后，将这些信息填入上述JSON格式中。如果您能提供具体的对话内容，我可以帮助您提取并格式化为JSON。","dialogId":20,"userId":6}}
+由于您没有提供具体的对话内容，我无法直接从对话中提取信息。但是，我可以给您一个示例格式，说明如何从对话中提取五元组并以JSON格式输出：
+
+```json
+{
+    "出发地点": "[出发地点]",
+    "出发时间": "yyyy.mm.dd hh:mm",
+    "结束地点": "[结束地点]",
+    "结束时间": "yyyy.mm.dd hh:mm",
+    "经过个数": [经过个数]
+}
+```
+
+请在对话中找出以下信息：
+- 出发地点
+- 出发时间（格式：yyyy.mm.dd hh:mm）
+- 结束地点
+- 结束时间（格式：yyyy.mm.dd hh:mm）
+- 经过的地点数量（经过个数）
+
+然后，将这些信息填入上述JSON格式中。如果您能提供具体的对话内容，我可以帮助您提取并格式化为JSON。
+INFO:     172.23.96.1:54784 - "GET /get-plan/?userId=11&dialogId=66 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "D:\Tasks\ChiikaTravel\chiika-test\docker\WorkSpace\get_plan.py", line 648, in get_plan
+    travel_plan = get_travel_plan(input_text)
+  File "D:\Tasks\ChiikaTravel\chiika-test\docker\WorkSpace\get_plan.py", line 247, in get_travel_plan
+    travel_plan = eval(content.strip())
+  File "<string>", line 1
+    由于您没有提供具体的对话内容，我无法直接从对话中提取信息。但是，我可以给您一个示例格式，说明如何从对话中提取五元组并以JSON格式输出：
+                  ^
+SyntaxError: invalid character '，' (U+FF0C)
+WARNING:  WatchFiles detected changes in 'get_plan.py'. Reloading...
+description=你好，请问你能帮到我什么吗？ 我早上八点到北京南站，计划在北京游玩一天，晚上六点左右到达北京西站，途径3个景点即可。
+创建的对话 ID 为：22
+{"code":1,"msg":"success","data":{"id":37,"input":"请从下面对话中提取出五元组并以JSON格式输出：你好，请问你能帮到我什么吗？ 我早上八点到北京南站，计划在北京游玩一天，晚上六点左右到达北京西站，途径3个景点即可。请将行程按以下格式输出，并确保以JSON格式提供：\n    { \n        \"出发地点\": \"[出发地点]\",\n        \"出发时间\": \"yyyy.mm.dd hh:mm\",\n        \"结束地点\": \"[结束地点]\",\n        \"结束时间\": \"yyyy.mm.dd hh:mm\",\n        \"经过个数\": [经过个数]\n    }","output":"{\n    \"出发地点\": \"北京南站\",\n    \"出发时间\": \"yyyy.mm.dd hh:mm\",\n    \"结束地点\": \"北京西站\",\n    \"结束时间\": \"yyyy.mm.dd hh:mm\",\n    \"经过个数\": 3\n}","dialogId":22,"userId":6}}
+{
+    "出发地点": "北京南站",
+    "出发时间": "yyyy.mm.dd hh:mm",
+    "结束地点": "北京西站",
+    "结束时间": "yyyy.mm.dd hh:mm",
+    "经过个数": 3
+}
+创建的对话 ID 为：23
+对话响应：
+{"code":1,"msg":"success","data":{"id":39,"input":"\n    TASK：作为旅游行程规划师，假设你充分了解北京市的所有地点以及交通信息，且十分擅长于根据不同人群的需求安排合理的游玩地点和时间。请根据给定信息推荐3个POI地点，构成一条顺畅且完整的旅行路线。\n    REQUEST：规划一个旅游路线，包括POI地点序列。请根据以下信息规划路线：1.出发地点：北京南站；2.出发时间：yyyy.mm.dd hh:mm；3.终止地点：北京西站；4.终止时间：yyyy.mm.dd hh:mm；5.途径点个数：3个；6.旅行偏好：{感兴趣的旅行地点：自然风光，美食；感兴趣的旅行方式：常规路线；旅行伙伴：恋人};；7.可参考的地点信息为：None\n    ACTION：\n    1. 确定本次行程的大概活动范围，根据起终点的位置规划路线。\n    2. 根据游客的偏好找到所有可能感兴趣的景点、美食、购物以及休闲娱乐场所等。\n    3. 综合考虑行程起终时间、交通时间、地点之间是否顺路等因素，规划一条合理的路线。\n    4. 安排就餐地点时尽量选择距离参观景点一公里以内的地点。\n    5. 你只需要返回 3 个你认为最合适的地点即可，不要多于 3 个也不要少于 3 个。\n    EXAMPLE：\n    以下是一个推荐POI地点的示例，最终输出应为 JSON 格式文本：\n    {\n        \"pois\":[\n            {\n                \"name\": \"[地点名称]\",\n                \"longitude\": [地点经度],\n                \"latitude\": [地点纬度]\n            },\n            ...\n        ]\n    }\n    ","output":"```json\n{\n    \"pois\": [\n        {\n            \"name\": \"颐和园\",\n            \"longitude\": 116.30542,\n            \"latitude\": 39.99786\n        },\n        {\n            \"name\": \"北京动物园\",\n            \"longitude\": 116.40387,\n            \"latitude\": 39.91629\n        },\n        {\n            \"name\": \"北京欢乐谷\",\n            \"longitude\": 116.52333,\n            \"latitude\": 39.99999\n        }\n    ]\n}\n```","dialogId":23,"userId":11}}
+解析 POI 内容时出错： Expecting value: line 1 column 1 (char 0)
+北京南站
+[116.37101129830273, 39.864677310761074]
+None
+北京西站
+[116.3159143863044, 39.893612651820256]
+INFO:     172.23.96.1:54863 - "GET /get-plan/?userId=11&dialogId=21 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "D:\Tasks\ChiikaTravel\chiika-test\docker\WorkSpace\get_plan.py", line 676, in get_plan
+    raise HTTPException(status_code=400, detail="Failed to get POI data")
+NameError: name 'HTTPException' is not defined
+description=你好，请问你能帮到我什么吗？ 我早上八点到北京南站，计划在北京游玩一天，晚上六点左右到达北京西站，途径3个景点即可。
+创建的对话 ID 为：25
+{"code":1,"msg":"success","data":{"id":43,"input":"请从下面对话中提取出五元组并以JSON格式输出：你好，请问你能帮到我什么吗？ 我早上八点到北京南站，计划在北京游玩一天，晚上六点左右到达北京西站，途径3个景点即可。请将行程按以下格式输出，并确保以JSON格式提供：\n    { \n        \"出发地点\": \"[出发地点]\",\n        \"出发时间\": \"yyyy.mm.dd hh:mm\",\n        \"结束地点\": \"[结束地点]\",\n        \"结束时间\": \"yyyy.mm.dd hh:mm\",\n        \"经过个数\": [经过个数]\n    }","output":"{\n    \"出发地点\": \"北京南站\",\n    \"出发时间\": \"yyyy.mm.dd 08:00\",\n    \"结束地点\": \"北京西站\",\n    \"结束时间\": \"yyyy.mm.dd 18:00\",\n    \"经过个数\": 3\n}","dialogId":25,"userId":6}}
+{
+    "出发地点": "北京南站",
+    "出发时间": "yyyy.mm.dd 08:00",
+    "结束地点": "北京西站",
+    "结束时间": "yyyy.mm.dd 18:00",
+    "经过个数": 3
+}
+创建的对话 ID 为：26
+对话响应：
+{"code":1,"msg":"success","data":{"id":45,"input":"\n    TASK：作为旅游行程规划师，假设你充分了解北京市的所有地点以及交通信息，且十分擅长于根据不同人群的需求安排合理的游玩地点和时间。请根据给定信息推荐3个POI地点，构成一条顺畅且完整的旅行路线。\n    REQUEST：规划一个旅游路线，包括POI地点序列。请根据以下信息规划路线：1.出发地点：北京南站；2.出发时间：yyyy.mm.dd 08:00；3.终止地点：北京西站；4.终止时间：yyyy.mm.dd 18:00；5.途径点个数：3个；6.旅行偏好：{感兴趣的旅行地点：自然风光，美食；感兴趣的旅行方式：常规路线；旅行伙伴：恋人};；7.可参考的地点信息为：None\n    ACTION：\n    1. 确定本次行程的大概活动范围，根据起终点的位置规划路线。\n    2. 根据游客的偏好找到所有可能感兴趣的景点、美食、购物以及休闲娱乐场所等。\n    3. 综合考虑行程起终时间、交通时间、地点之间是否顺路等因素，规划一条合理的路线。\n    4. 安排就餐地点时尽量选择距离参观景点一公里以内的地点。\n    5. 你只需要返回 3 个你认为最合适的地点即可，不要多于 3 个也不要少于 3 个。\n    EXAMPLE：\n    以下是一个推荐POI地点的示例，最终输出应为 JSON 格式文本：\n    {\n        \"pois\":[\n            {\n                \"name\": \"[地点名称]\",\n                \"longitude\": [地点经度],\n                \"latitude\": [地点纬度]\n            },\n            ...\n        ]\n    }\n    ","output":"```json\n{\n    \"pois\": [\n        {\n            \"name\": \"颐和园\",\n            \"longitude\": 116.30542,\n            \"latitude\": 39.99786\n        },\n        {\n            \"name\": \"北京动物园\",\n            \"longitude\": 116.40387,\n            \"latitude\": 39.91488\n        },\n        {\n            \"name\": \"北京欢乐谷\",\n            \"longitude\": 116.5039,\n            \"latitude\": 40.0047\n        }\n    ]\n}\n```","dialogId":26,"userId":11}}
+解析 POI 内容时出错： Expecting value: line 1 column 1 (char 0)
+北京南站
+[116.37101129830273, 39.864677310761074]
+None
+北京西站
+[116.3159143863044, 39.893612651820256]
+INFO:     172.23.96.1:55023 - "GET /get-plan/?userId=11&dialogId=24 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "D:\Tasks\ChiikaTravel\chiika-test\docker\WorkSpace\get_plan.py", line 676, in get_plan
+    raise HTTPException(status_code=400, detail="Failed to get POI data")
+NameError: name 'HTTPException' is not defined
+description=你好，请问你能帮到我什么吗？ 我早上八点到北京南站，计划在北京游玩一天，晚上六点左右到达北京西站，途径3个景点即可。
+创建的对话 ID 为：27
+{"code":1,"msg":"success","data":{"id":47,"input":"请从下面对话中提取出五元组并以JSON格式输出：你好，请问你能帮到我什么吗？ 我早上八点到北京南站，计划在北京游玩一天，晚上六点左右到达北京西站，途径3个景点即可。请将行程按以下格式输出，并确保以JSON格式提供：\n    { \n        \"出发地点\": \"[出发地点]\",\n        \"出发时间\": \"yyyy.mm.dd hh:mm\",\n        \"结束地点\": \"[结束地点]\",\n        \"结束时间\": \"yyyy.mm.dd hh:mm\",\n        \"经过个数\": [经过个数]\n    }","output":"{\n    \"出发地点\": \"北京南站\",\n    \"出发时间\": \"yyyy.mm.dd 08:00\",\n    \"结束地点\": \"北京西站\",\n    \"结束时间\": \"yyyy.mm.dd 18:00\",\n    \"经过个数\": [3]\n}","dialogId":27,"userId":6}}
+{
+    "出发地点": "北京南站",
+    "出发时间": "yyyy.mm.dd 08:00",
+    "结束地点": "北京西站",
+    "结束时间": "yyyy.mm.dd 18:00",
+    "经过个数": [3]
+}
+创建的对话 ID 为：28
+对话响应：
+{"code":1,"msg":"success","data":{"id":49,"input":"\n    TASK：作为旅游行程规划师，假设你充分了解北京市的所有地点以及交通信息，且十分擅长于根据不同人群的需求安排合理的游玩地点和时间。请根据给定信息推荐[3]个POI地点，构成一条顺畅且完整的旅行路线。\n    REQUEST：规划一个旅游路线，包括POI地点序列。请根据以下信息规划路线：1.出发地点：北京南站；2.出发时间：yyyy.mm.dd 08:00；3.终止地点：北京西站；4.终止时间：yyyy.mm.dd 18:00；5.途径点个数：[3]个；6.旅行偏好：{感兴趣的旅行地点：自然风光，美食；感兴趣的旅行方式：常规路线；旅行伙伴：恋人};；7.可参考的地点信息为：None\n    ACTION：\n    1. 确定本次行程的大概活动范围，根据起终点的位置规划路线。\n    2. 根据游客的偏好找到所有可能感兴趣的景点、美食、购物以及休闲娱乐场所等。\n    3. 综合考虑行程起终时间、交通时间、地点之间是否顺路等因素，规划一条合理的路线。\n    4. 安排就餐地点时尽量选择距离参观景点一公里以内的地点。\n    5. 你只需要返回 [3] 个你认为最合适的地点即可，不要多于 [3] 个也不要少于 [3] 个。\n    EXAMPLE：\n    以下是一个推荐POI地点的示例，最终输出应为 JSON 格式文本：\n    {\n        \"pois\":[\n            {\n                \"name\": \"[地点名称]\",\n                \"longitude\": [地点经度],\n                \"latitude\": [地点纬度]\n            },\n            ...\n        ]\n    }\n    ","output":"```json\n{\n    \"pois\": [\n        {\n            \"name\": \"颐和园\",\n            \"longitude\": 116.30542,\n            \"latitude\": 39.99786\n        },\n        {\n            \"name\": \"北京动物园\",\n            \"longitude\": 116.40387,\n            \"latitude\": 39.91629\n        },\n        {\n            \"name\": \"北京欢乐谷\",\n            \"longitude\": 116.50387,\n            \"latitude\": 40.00389\n        }\n    ]\n}\n```","dialogId":28,"userId":11}}
+解析 POI 内容时出错： Expecting value: line 1 column 1 (char 0)
+北京南站
+[116.37101129830273, 39.864677310761074]
+None
+北京西站
+[116.3159143863044, 39.893612651820256]
+INFO:     127.0.0.1:55911 - "GET /get-plan/?userId=11&dialogId=24 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\middleware\cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+  File "C:\Users\18154\.conda\envs\devopsgpt\lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+  File "D:\Tasks\ChiikaTravel\chiika-test\docker\WorkSpace\get_plan.py", line 676, in get_plan
+    raise HTTPException(status_code=400, detail="Failed to get POI data")
+NameError: name 'HTTPException' is not defined
