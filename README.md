@@ -2,26 +2,32 @@
 
 ## 项目简介
 
-OceanGuide 是一个集成了前端、后端、算法与数据处理的综合性项目，旨在为用户提供高效的路径规划与地理信息服务。项目采用微服务架构，后端基于 Python FastAPI，前端采用现代 Web 技术，集成了 TSP（旅行商问题）求解算法，并支持 Docker 部署。
+OceanGuide 是一个集成前端、后端、算法与数据处理的综合性路径规划与地理信息服务平台。项目采用微服务架构，后端基于 Python FastAPI，前端采用现代 Web 技术，集成 TSP（旅行商问题）求解算法，并支持 Docker 部署。**本项目核心数据服务依托 OceanBase 数据库，充分发挥其在高并发和大规模数据处理场景下的卓越性能。**
+
+---
+
+## OceanBase 亮点
+
+- **高性能并发**：在多次测试中，OceanGuide 系统所有功能均能正常运行，特别是在并发访问情况下，OceanBase 展现了出色的性能优势，保证了数据处理的高效性和准确性。
+- **弹性扩展**：OceanBase 支持分布式部署，适合大规模地理数据和路径规划业务的横向扩展。
+- **数据一致性与安全**：依托 OceanBase 的事务机制，保障路径规划与地理信息数据的强一致性和安全性。
 
 ---
 
 ## 目录结构
 
-```
+```shell
 OceanGuide/
 ├── PPT.pptx                # 项目演示PPT
 ├── README.md               # 项目说明文档
 ├── 技术文档.pdf            # 技术文档
 ├── 演示视频.mp4            # 项目演示视频
-├── .idea/                  # IDE 配置文件
 ├── docker/
 │   ├── backend.jar         # 后端服务Jar包（如有Java服务）
 │   ├── docker-compose.yml  # Docker Compose 配置
 │   ├── Dockerfile.backend  # 后端服务Dockerfile
 │   └── database/
 │       └── poi_data/
-│           ├── 相关数据说明.docx
 │           └── 数据集/
 │   └── frontend/
 │       └── kqgis/          # 前端代码
@@ -44,6 +50,7 @@ OceanGuide/
 ### 1. 环境准备
 
 - 安装 [Docker](https://www.docker.com/)
+- 安装 OceanBase 数据库（可参考 [OceanBase 官方文档](https://www.oceanbase.com/docs/)）
 - 克隆本项目到本地
 
 ### 2. 构建与运行
@@ -73,6 +80,7 @@ docker run -p 7780:7780 ocean_guide_python
 - 地图数据恢复与处理
 - 前端地图可视化
 - 多种数据集支持
+- **OceanBase 高性能数据服务**
 - Docker 化部署，便于迁移和扩展
 
 ---
